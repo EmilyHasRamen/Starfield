@@ -12,19 +12,20 @@ void draw()
 class NormalParticle
 {
 	//your code here
-	int myX, myY
-
+	double doubleSpeed, doubleX, doubleY, doubleTheta 
 		NormalParticle()
 		{
-
+			myX=x;
+			myY=y
+			doublespeed=
 		}
 		void move()
 		{
-
+			x=
 		}
 		void show()
 		{
-
+			ellipse(x, y, width, height);
 		}
 }
 interface Particle
