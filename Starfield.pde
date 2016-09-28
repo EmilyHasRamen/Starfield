@@ -1,4 +1,5 @@
 //your code here
+Partical[] starBits;
 void setup()
 {
 	//your code here
@@ -8,26 +9,32 @@ void setup()
 void draw()
 {
 	//your code here
+	starBits= new NormalParticle[50];
+	for(int i=10; )
 }
 class NormalParticle
 {
 	//your code here
-	double doubleSpeed, doubleX, doubleY, doubleTheta 
-		NormalParticle()
+	double dSpeed, dX, dY, dTheta 
+		NormalParticle(int x=0, int y=0 )
 		{
 			myX=x;
-			myY=y
-			doublespeed=
+			myY=y;
+			doublespeed= Math.random()*10
+			doubleTheta= Math.PI*2*Math.random();
 		}
 		void move()
 		{
-			x=
+			myX=x+(int)(Math,random()*11)-5;
+			myY=y+(int)(Math,random()*11)-5;
 		}
 		void show()
 		{
-			ellipse(x, y, width, height);
+			//Remember that there should be a hide function
+			ellipse(myX, myY, width, height);
 		}
-}
+		
+	}
 interface Particle
 {
 	//your code here
