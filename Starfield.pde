@@ -1,50 +1,103 @@
 //your code here
-Partical[] starBits;
+Particle[] starBits;
+public final double centerX=250, centerY=250;
+
 void setup()
 {
 	//your code here
-	background(0)
-	size(500,500)
+	background(0);
+	size(500,500);
+	starBits = new Particle[50];
+	for(int i=0; i<starBits.length; i++)
+	{
+		starBits[i]=new NormalParticle();
+	}
+
 }
 void draw()
 {
+	PImage img;
+	img = loadImage("giphy_blackbg.gif");
+	tint(255, 126);  // Apply transparency without changing color
+//	tint(0, 126);
+//	tint(255, 0);
+	image(img, 0, 302);
+
 	//your code here
-	starBits= new NormalParticle[50];
-	for(int i=10; )
+	for(int i=0; i<starBits.length; i++)
+	{
+		starBits[i].hide();
+		starBits[i].move();
+		starBits[i].show();
+	}
+
 }
-class NormalParticle
+class NormalParticle implements Particle
+//class NormalParticle implements Particle
 {
 	//your code here
-	double dSpeed, dX, dY, dTheta 
-		NormalParticle(int x=0, int y=0 )
+	double dSpeed, dX, dY, dTheta;
+		NormalParticle()
 		{
-			myX=x;
-			myY=y;
-			doublespeed= Math.random()*10
-			doubleTheta= Math.PI*2*Math.random();
+			dX = centerX;
+			dY = centerY;
+			dSpeed = Math.random()*10;
+			dTheta = Math.PI*2*Math.random();
+//println("dX=" + dX + ", dY=" + dY + ", dSpeed=" + dSpeed + ", dTheta=" + dTheta);
 		}
 		void move()
 		{
-			myX=x+(int)(Math,random()*11)-5;
-			myY=y+(int)(Math,random()*11)-5;
+			dX = dX+(Math.cos(dTheta)*dSpeed);
+			dY = dY+(Math.sin(dTheta)*dSpeed);
 		}
 		void show()
 		{
+//println("dX=" + dX + ", dY=" + dY + ", dSpeed=" + dSpeed + ", dTheta=" + dTheta);
 			//Remember that there should be a hide function
-			ellipse(myX, myY, width, height);
+			fill(255);
+			ellipse((float)dX, (float)dY, 10, 10);
 		}
 		
-	}
+		void hide()
+		{
+			fill(0);
+			ellipse((float)dX, (float)dY, 11, 11);
+		}
+}
 interface Particle
 {
 	//your code here
+	public void move();
+	public void show();
+	public void hide();
 }
-class OddballParticle //uses an interface
+class OddballParticle implements Particle //uses an interface
 {
 	//your code here
-}
-class JumboParticle //uses inheritance
-{
-	//your code here
-}
+	void move()
+	{
 
+	}
+	void show()
+	{
+
+	}
+	void hide()
+	{
+	}
+}
+class JumboParticle extends NormalParticle//uses inheritance
+{
+	//your code here
+	void move()
+	{
+
+	}
+	void show()
+	{
+		
+	}
+	void hide()
+	{
+	}
+}
