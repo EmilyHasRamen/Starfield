@@ -1,17 +1,19 @@
 //your code here
 Particle[] starBits;
 public final double centerX=250, centerY=250;
-
+public final float screenX=500, screenY=500;
 void setup()
 {
 	//your code here
 	background(0);
+//	size(screenX,screenY);
 	size(500,500);
 	starBits = new Particle[50];
 	for(int i=0; i<starBits.length; i++)
 	{
 		starBits[i]=new NormalParticle();
 	}
+	starBits[49]= new JumboParticle();
 
 }
 void draw()
@@ -49,6 +51,14 @@ class NormalParticle implements Particle
 		{
 			dX = dX+(Math.cos(dTheta)*dSpeed);
 			dY = dY+(Math.sin(dTheta)*dSpeed);
+
+			if ( screenX<dX || screenY<dY || dY<0 || dX<0 ) {
+//				NormalParticle();
+			dX = centerX;
+			dY = centerY;
+			dSpeed = Math.random()*10;
+			dTheta = Math.PI*2*Math.random();
+			}
 		}
 		void show()
 		{
@@ -89,15 +99,15 @@ class OddballParticle implements Particle //uses an interface
 class JumboParticle extends NormalParticle//uses inheritance
 {
 	//your code here
-	void move()
-	{
-
-	}
+	
 	void show()
 	{
-		
+		fill(255,0,0);	
+		ellipse((float)dX, (float)dY, 25, 25);
 	}
 	void hide()
 	{
+		fill(0);	
+		ellipse((float)dX, (float)dY, 26, 26);
 	}
 }
