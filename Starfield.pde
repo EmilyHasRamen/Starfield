@@ -17,7 +17,7 @@ void setup()
 	starBits[0]= new JumboParticle();
 	starBits[1]= new OddballParticle(); 	// green - "spiral"
 	starBits[2]= new Oddball2Particle();	// dark blue - reverse "spiral"
-	starBits[3]= new Oddball3Particle();	// pink - orbit touches cneter
+	starBits[3]= new Oddball3Particle();	// pink - orbit touches center
 	starBits[4]= new Oddball4Particle();	// light blue - non-centered orbit
 	starBits[5]= new Oddball5Particle();	// yellow - faster non-centered orbit
 	starBits[6]= new Oddball6Particle();	// Tardis
@@ -167,7 +167,7 @@ class Oddball3Particle extends OddballParticle//uses inheritance
 
 	void show()
 	{
-		fill(255,0,255);  // pink - orbit touches cneter
+		fill(255,0,255);  // pink - orbit touches center
 			ellipse((float)dX, (float)dY, 30, 30);
 	}
 }
@@ -177,7 +177,7 @@ class Oddball4Particle extends OddballParticle//uses inheritance
 	void setParticle()
 	{
 		// circular path "orbiting" center
-		dSpeed = (2*Math.PI);
+		dSpeed = -2*Math.PI;
 		dTheta = 2*Math.PI;
 		dThetaChg = 1/(1.5*Math.PI*dSpeed);
 		dX = centerX-(Math.cos(dTheta)*dSpeed)+10;
